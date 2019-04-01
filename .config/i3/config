@@ -1,0 +1,175 @@
+#####
+#
+# This i3-wm config was created on 03-2019 by Adasko
+#
+#####
+
+# --- BASIC CONFIG ---
+# Windows key as mod key
+set $mod Mod4
+
+# Font
+font pango:lucy tewi Regular 9
+
+# Floating modifier
+floating_modifier $mod
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Reload configuration file
+bindsym $mod+Shift+c reload
+# Restart i3wm
+bindsym $mod+Shift+r restart
+# Exit i3wm
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes' 'i3-msg exit'"
+
+# --- COLORS ---
+#set $bg  #262626
+#set $fg  #A8A8A8
+#set $white #ffffff
+#set $darkcol #4E6478
+#set $lightcol #6B7A87
+
+# Setting colors for:  		border		backgrn		text		ind.		win_border
+#client.focused 			$bg 		$bg 		$col 		$bg 		$col
+#client.unfocused 		$bg 		$bg 		$fg 		$bg 		$bg
+#client.focused_inactive 	$bg 		$bg		$fg 		$bg 		$bg
+#client.urgent 			$col 		$col 		$fg 		$col 		$bg
+
+# --- MOVEMENT KEYBINDING ---
+# Focus with vim keybindings
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Focus with arrows
+#bindsym $mod+Left focus left
+#bindsym $mod+Down focus down
+#bindsym $mod+Up focus up
+#bindsym $mod+Right focus right
+
+# Moving focused windows (vim keybindings)
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Resizing focused window
+bindsym $mod+u resize shrink width 10 px or 10 ppt
+bindsym $mod+i resize grow height 10 px or 10 ppt
+bindsym $mod+o resize shrink height 10 px or 10 ppt
+bindsym $mod+p resize grow width 10 px or 10 ppt
+
+# Splitting horizontal & vertical
+bindsym $mod+v split toggle
+
+# Fullscreen mode
+bindsym $mod+f fullscreen toggle
+
+# Change container layout (stacked, tabbed, toggle split)
+#bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Floating window binding
+bindsym $mod+Shift+f floating toggle
+
+# Change focus between tiling / floating window
+bindsym $mod+space focus mode_toggle
+
+# Focus parent container
+bindsym $mod+a focus parent
+
+# Focus child container
+bindsym $mod+c focus child
+
+# --- WORKSPACES ---
+# Defined workspaces
+set $ws1  "-1-"
+set $ws2  "-2-"
+set $ws3  "-3-"
+set $ws4  "-4-"
+set $ws5  "-5-"
+set $ws6  "-6-"
+set $ws7  "-7-"
+set $ws8  "-8-"
+set $ws9  "-9-"
+set $ws10 "-0-"
+
+# Bind application to workspaces
+# --- WORKSPACES @ WORK
+#assign [class="Firefox"] $ws2
+#assign [class="Pycharm"] $ws3
+#assign [class="Gimp"] $ws7
+#assign [class="Spotify"] $ws8
+#assign [class="Skype"] $ws9
+#assign [class="Thunderbird" $ws10
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# Move container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# Move focused workspace to left/right output
+bindsym $mod+Shift+bracketleft move workspace to output left
+bindsym $mod+Shift+bracketright move workspace to output right
+
+# Media keys support TODO: MEDIA KEYS SUPPORT
+#bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/scripts/volume.sh u
+#bindsym $mod+F2
+#bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/scripts/volume.sh d
+#bindsym $mod+F3
+#bindsym XF86AudioMute exec --no-startup-id ~/.config/scripts/volume.sh m
+#bindsym $mod+F4
+#
+#bindsym XF86AudioPlay
+#bindsym $mod+F9
+#bindsym XF86AudioPause
+#bindsym $mod+F9
+#bindsym XF86AudioStop
+#bindsym $mod+F10
+#bindsym XF86AudioPrev
+#bindsym $mod+F11
+#bindsym XF86AudioNext
+#bindsym $mod+F12
+
+# Display Status bar
+bar {
+	status_command i3status
+}
+
+# Run DMenu
+bindsym $mod+d exec dmenu_run
+
+# --- PROGRAM STARTUP ---
+set $wallpaper --no-startup-id feh --bg-scale ~/.config/wallpape.jpg
+
+# --- EXEC PROGRAMS
+#bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec i3-sensible-terminal
+
+# Set wallpaper
+exec always $wallpaper
+
+
