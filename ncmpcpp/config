@@ -1,0 +1,49 @@
+mpd_music_dir = "~/music"
+ncmpcpp_directory = "~/.config/ncmpcpp"
+mpd_host = "localhost"
+mpd_port = "6600"
+mpd_connection_timeout = "5"
+
+# Display
+#song_list_format = " $0%n $1= $8%t $R$0%a "
+song_columns_list_format = "(3)[white]{n} (40)[green]{t} (30)[white]{a} (20)[cyan]{b} (2)[blue]{l}"
+song_status_format = " $0%a   $3%t "
+playlist_display_mode = "columns" (classic/columns)
+
+# Now playing
+now_playing_prefix = "$3> "
+current_item_prefix = "$(green)$r"
+current_item_suffix = "$/r$(end)"
+
+# Delays
+playlist_disable_highlight_delay = 0
+message_delay_time = "1"
+
+# Progress bar
+progressbar_look = "━━─"
+# progressbar_look = "╺> "
+progressbar_color = "black"
+progressbar_elapsed_color = "green"
+
+# Colors
+colors_enabled = "yes"
+empty_tag_color = "red"
+statusbar_color = "white"
+state_line_color = "black"
+state_flags_color = "green"
+main_window_color = "green"
+header_window_color = "white"
+
+# Misc
+display_bitrate = "yes"
+autocenter_mode = "yes"
+centered_cursor = "yes"
+titles_visibility = "no"
+statusbar_visibility = "yes"
+empty_tag_marker = " -- !! -- "
+mouse_support = "no"
+header_visibility = "yes"
+display_remaining_time = "no"
+ask_before_clearing_playlists = "yes"
+discard_colors_if_item_is_selected = "yes"
+

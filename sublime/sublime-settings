@@ -1,0 +1,12 @@
+{
+	"ignored_packages": [
+	],
+	"vintage_start_in_command_mode": true,
+	"color_scheme": "Packages/Color Scheme - Default/Mariana.sublime-color-scheme",
+	"theme": "Default Dark.sublime-theme",
+	"font_size": 10,
+	"rulers": [80],
+	"translate_tabs_to_spaces": true,
+	"highlight_line": true,
+	"draw_white_space": ["all", "selection"]
+}

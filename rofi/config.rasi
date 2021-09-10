@@ -1,0 +1,9 @@
+configuration {
+  modi: "drun";
+  theme: "kde_krunner";
+  font: "Iosevka 11";
+  combi-modi: "drun";
+  icon-theme: "papirus";
+  show-icons: true;
+}
+@import "kde_krunner.rasi"

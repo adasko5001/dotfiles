@@ -1,0 +1,228 @@
+;=====================
+;
+; MODULES FOR POLYBAR
+;
+;=====================
+
+
+;============================
+; Rounded borders for modules
+;============================
+[module/border-left-dark]
+type = custom/text
+content-foreground = ${colors.background-dark}
+content = "%{T3}%{T-}"
+
+[module/border-right-dark]
+type = custom/text
+content-foreground = ${colors.background-dark}
+content = "%{T3}%{T-}"
+
+[module/border-left-light]
+type = custom/text
+content-foreground = ${colors.background-light}
+content = "%{T3}%{T-}"
+
+[module/border-right-light]
+type = custom/text
+content-foreground = ${colors.background-light}
+content = "%{T3}%{T-}"
+
+
+;=========================================================
+; Separator (used between modules of different background)
+;=========================================================
+[module/separator]
+type = custom/text
+content = " "
+content-margin = 2
+content-foreground = ${colors.foreground-dark}
+
+
+;=====================
+; i3 workspaces module
+;=====================
+[module/i3]
+type = internal/i3
+; Sort workspaces by index number
+index-sort = true
+; Disable scroll
+enable-scroll = false
+; Pin workspaces to proper bar
+pin-workspaces = true
+; Labels
+label-focused = %index%
+label-unfocused = %index%
+label-visible = %index%
+label-urgent = %index%
+
+; Padding 
+label-focused-padding = 5
+label-unfocused-padding = 5
+label-visible-padding = 5
+label-urgent-padding = 5
+
+; Colors
+label-focused-foreground = ${colors.foreground-active}
+label-unfocused-foreground = ${colors.foreground}
+label-urgent-foreground = ${colors.background} 
+label-urgent-background = ${colors.foreground-active}
+label-focused-background = ${colors.background-dark}
+label-unfocused-background = ${colors.background-dark}
+
+
+;=============
+; MPD module
+;=============
+[module/mpd]
+type = internal/mpd
+
+host = 127.0.0.1
+port = 6600
+interval = 2
+
+label-song =  %artist% - %title%
+label-song-foreground = ${colors.violet}
+
+label-offline = ""
+format-online = <label-song>
+
+label-song-maxlen = 180
+label-song-ellipsis = true
+
+
+;==============
+; Volume module
+;==============
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume> 
+label-volume = %percentage%%
+
+label-volume-foreground = ${colors.green}
+format-volume-prefix = " "
+format-volume-prefix-foreground = ${colors.green}
+format-volume-background = ${colors.background-dark}
+
+label-muted-foreground = ${colors.red} 
+label-muted = " Muted"
+format-muted-background = ${colors.background-dark}
+
+format-volume-padding = 5
+format-muted-padding = 5
+
+
+;==================
+; Filesystem module
+;==================
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /home
+
+label-mounted = %free%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground}
+format-unmounted-background = ${colors.background-dark}
+format-unmounted-padding = 5
+
+format-mounted-prefix = " "
+format-mounted-prefix-foreground = ${colors.blue}
+format-mounted-foreground = ${colors.blue}
+format-mounted-background = ${colors.background-dark}
+format-mounted-padding = 5
+
+
+;===================
+; Used memory module
+;===================
+[module/memory]
+type = internal/memory
+interval = 5
+
+label = " %gb_used%"
+label-foreground = ${colors.orange}
+format-background = ${colors.background-dark}
+format-padding = 5
+
+
+;============
+; Wifi module
+;============
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+label-connected = " %essid%"
+label-disconnected = ""
+label-connected-foreground = ${colors.green}
+format-connected-background = ${colors.background-dark}
+format-connected-padding = 5
+
+
+;=================
+; Wired eth module
+;=================
+[module/eth]
+type = internal/network
+interface = ${env:NETWORK_INTERFACE:br0}
+interval = 3.0
+
+format-connected-prefix = " "
+label-connected = %local_ip%
+format-connected-background = ${colors.background-dark}
+format-connected-foreground = ${colors.green}
+format-connected-padding = 5
+
+
+;===============
+; Battery module
+;===============
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 96
+
+format-charging-prefix = " "
+format-charging-foreground = ${colors.yellow}
+format-charging-background = ${colors.background-dark}
+format-charging-padding = 5
+
+format-full-prefix = " "
+format-full-foreground = ${colors.green}
+format-full-background = ${colors.background-dark}
+format-full-padding = 5
+
+format-discharging = <ramp-capacity><label-discharging>
+format-discharging-background = ${colors.background-dark}
+format-discharging-foreground = ${colors.yellow}
+format-discharging-padding = 5
+
+ramp-capacity-4 = " "
+ramp-capacity-3 = " "
+ramp-capacity-2 = " "
+ramp-capacity-1 = " "
+ramp-capacity-0 = " "
+
+
+;================
+;Date time module
+;================
+[module/date]
+type = internal/date
+interval = 5
+format-prefix-foreground = ${colors.foreground}
+format-background = ${colors.background-light}
+
+format-padding = 5
+
+date = "%A, %b %d"
+time = %H:%M
+label = %date%      %time%
+
+
+; vim:ft=dosini

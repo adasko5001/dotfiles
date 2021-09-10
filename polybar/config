@@ -1,0 +1,129 @@
+;==========================================================
+;
+; MAIN POLYBAR CONFIG FILE
+;
+;==========================================================
+[colors]
+background        = #353b49
+background-dark   = ${xrdb:background}
+background-light  = ${xrdb:color0}
+
+foreground        = ${xrdb:foreground}
+foreground-active = ${xrdb:color4}
+
+green             = ${xrdb:color2}
+red               = ${xrdb:color1}
+yellow            = ${xrdb:color3}
+blue              = ${xrdb:color4}
+violet            = ${xrdb:color5}
+orange            = #a77264
+
+
+[section/base]
+include-file = $HOME/.config/polybar/modules
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0 
+
+
+;================
+; BASE BAR CLASS
+;================
+[bar/basebar]
+width = 100%
+height = 30 
+radius = 0
+fixed-center = true
+enable-ipc = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 1
+
+border-top-size = 4
+border-bottom-size = 4
+border-top-color = ${colors.background}
+border-bottom-color = ${colors.background}
+
+padding-left = 3 
+padding-right = 3
+module-margin-left = 0
+module-margin-right = 0 
+
+font-0 = Product Sans Light:style=light:size=9;2
+font-1 = FontAwesome5Free:style=Solid:size=8;2
+font-2 = Iosevka:style=Normal:size=19;4
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+;==================================
+; BAR FOR LAPTOP DISPLAY (eDP)
+;==================================
+[bar/eDP]
+inherit = bar/basebar
+monitor = eDP
+
+modules-left = border-left-dark i3 border-right-dark separator mpd
+modules-right = border-left-dark pulseaudio filesystem memory wlan eth battery border-right-dark separator border-left-light date border-right-light
+
+tray-position = right
+tray-padding = 2
+
+
+;===================================
+; BARS FOR DOCKED LAPTOP DISPLAYS
+;===================================
+; MAIN DISPLAY
+[bar/MAIN_DOCK_DISPLAY]
+inherit = bar/basebar
+monitor = DisplayPort-3
+
+modules-left = border-left-dark i3 border-right-dark separator mpd
+modules-right = border-left-dark pulseaudio filesystem memory wlan eth battery border-right-dark separator border-left-light date border-right-light
+
+tray-position = right
+tray-padding = 2
+
+; SECONDARY DISPLAY
+[bar/SECONDARY_DOCK_DISPLAY]
+inherit = bar/basebar
+monitor = DisplayPort-2
+
+modules-left = border-left-dark i3 border-right-dark separator mpd
+modules-right = border-left-dark pulseaudio filesystem memory wlan eth battery border-right-dark separator border-left-light date border-right-light
+
+tray-position = none
+
+
+;===================================
+; BARS FOR WORK PC
+;===================================
+; MAIN DISPLAY
+[bar/MAIN_WORK_DISPLAY]
+inherit = bar/basebar
+monitor = DVI-I-1
+
+modules-left = border-left-dark i3 border-right-dark separator mpd
+modules-right = border-left-dark pulseaudio memory eth border-right-dark separator border-left-light date border-right-light
+
+tray-position = right
+tray-padding = 2
+
+; SECONDARY DISPLAY
+[bar/SECONDARY_WORK_DISPLAY]
+inherit = bar/basebar
+monitor = VGA-0
+
+modules-left = border-left-dark i3 border-right-dark separator mpd
+modules-right = border-left-dark pulseaudio memory eth border-right-dark separator border-left-light date border-right-light
+
+tray-position = none
+
+; vim:ft=dosini

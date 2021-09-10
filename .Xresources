@@ -1,0 +1,69 @@
+!============================================!
+! Color scheme (Nord termite)  stolen from:  !
+!   github.com/arcticicestudio               !
+! 				Thx          !
+!============================================!
+
+#define black           #3b4252
+#define red             #bf616a
+#define green           #a3be8c
+#define yellow          #ebcb8b
+#define blue            #81a1c1
+#define violet          #b48ead
+#define cyan            #88c0d0
+#define white           #e5e9f0
+
+#define blacklight     #4c566a
+#define redlight       #bf616a
+#define greenlight     #a3be8c
+#define yellowlight    #ebcb8b
+#define bluelight      #81a1c1
+#define violetlight    #b48ead
+#define cyanlight      #8fbcbb
+#define whitelight     #eceff4
+
+
+*.foreground:  #d8dee9
+*.background:  #2e3440
+*.cursorColor: #d8dee9
+
+*.color0:  black
+*.color1:  red
+*.color2:  green
+*.color3:  yellow
+*.color4:  blue
+*.color5:  violet
+*.color6:  cyan
+*.color7:  white
+*.color8:  blacklight
+*.color9:  redlight
+*.color10: greenlight
+*.color11: yellowlight
+*.color12: bluelight
+*.color13: violetlight
+*.color14: cyanlight
+*.color15: whitelight
+
+*color0:  black
+*color1:  red
+*color2:  green
+*color3:  yellow
+*color4:  blue
+*color5:  violet
+*color6:  cyan
+*color7:  white
+*color8:  blacklight
+*color9:  redlight
+*color10: greenlight
+*color11: yellowlight
+*color12: bluelight
+*color13: violetlight
+*color14: cyanlight
+*color15: whitelight
+
+
+! Urxvt config
+URxvt.scrollBar: false
+URxvt.internalBorder: 10
+
+URxvt.font: xft:Iosevka:size=12

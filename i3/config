@@ -1,0 +1,271 @@
+# ==================================================== #
+#                                                      #
+#  Unified i3(gaps)-wm config                          #
+#  (between personal laptop and company's PC)          #
+#                                                      #
+#                                   created by Adasko  #
+#                                                      #
+# ==================================================== #
+
+
+# Windows key as mod key
+set $mod Mod4
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Reload configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3wm
+bindsym $mod+Shift+r restart
+
+# Exit i3wm
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes' 'i3-msg exit'"
+
+
+# === STYLING ===
+# Font
+font pango:Iosevka 10
+
+# Colors
+set $blue                #81a1c1
+set $white               #d8dee9
+set $grey-dark           #353b49
+set $grey                #3b4252
+set $red                 #bf616a
+set $red-dark            #900000
+
+# Setting colors for:  		border			backgrn			text			ind.			win_border
+client.focused 			$blue   		$blue			$white			$grey			$blue
+client.unfocused 		$grey-dark		$grey-dark		$white  		$grey-dark		$grey-dark
+client.focused_inactive 	$grey-dark		$grey-dark		$white 	        	$grey-dark		$grey-dark
+client.urgent 			$red			$red			$white			$red-dark  		$red
+
+for_window [class="^.*"] border pixel 2
+
+# Disable this if using regular version of i3-wm.
+smart_gaps on
+gaps inner 10
+
+
+# === MOVEMENT KEYBINDING ===
+# Focus with vim keybindings
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Moving focused windows (vim keybindings)
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Resizing focused window
+bindsym $mod+u resize shrink width 10 px or 10 ppt
+bindsym $mod+i resize grow height 10 px or 10 ppt
+bindsym $mod+o resize shrink height 10 px or 10 ppt
+bindsym $mod+p resize grow width 10 px or 10 ppt
+
+# Splitting horizontal & vertical
+bindsym $mod+v split toggle
+
+# Fullscreen mode
+bindsym $mod+f fullscreen toggle
+
+# Change container layout (tabbed, toggle split)
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Floating modifier
+floating_modifier $mod
+
+# Floating window binding
+bindsym $mod+Shift+f floating toggle
+
+# Change focus between tiling / floating window
+bindsym $mod+space focus mode_toggle
+
+# Focus parent container
+bindsym $mod+a focus parent
+
+# Focus child container
+bindsym $mod+c focus child
+
+
+# === WORKSPACES ===
+# Defined workspaces
+set $ws1  "1"
+set $ws2  "2"
+set $ws3  "3"
+set $ws4  "4"
+set $ws5  "5"
+set $ws6  "6"
+set $ws7  "7"
+set $ws8  "8"
+set $ws9  "9"
+set $ws10 "0"
+
+# Assign workspaces to proper display outputs
+# (@WORK) At Work
+# set $PRIMARY_DISPLAY "DVI-I-1"
+# set $SECONDARY_DISPLAY "VGA-0"
+
+# (@HOME-OFFICE) Work At Home Office (switched monitor outputs)
+# set $PRIMARY_DISPLAY "HDMI-1"
+# set $SECONDARY_DISPLAY "VGA-0"
+
+# workspace $ws1 output $PRIMARY_DISPLAY
+# workspace $ws2 output $PRIMARY_DISPLAY
+# workspace $ws3 output $PRIMARY_DISPLAY
+# workspace $ws4 output $PRIMARY_DISPLAY
+# workspace $ws5 output $PRIMARY_DISPLAY
+
+# workspace $ws6 output $SECONDARY_DISPLAY
+# workspace $ws7 output $SECONDARY_DISPLAY
+# workspace $ws8 output $SECONDARY_DISPLAY
+# workspace $ws9 output $SECONDARY_DISPLAY
+# workspace $ws10 output $SECONDARY_DISPLAY
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# Move container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# Move focused workspace to left/right output
+bindsym $mod+Shift+bracketleft move workspace to output left
+bindsym $mod+Shift+bracketright move workspace to output right
+
+# Bind application to workspaces
+# (@WORK) At work
+# assign [class="Pycharm"] 	$ws1
+# assign [class="Firefox"] 	$ws8
+# assign [class="Skype"] 	$ws9
+# assign [class="Thunderbird"] 	$ws10
+
+# (@HOME) At home
+assign [class="Thunderbird"]	$ws10
+
+# Set certain windows floating
+for_window [class="XCalc"] floating enable
+
+# === Media Keys ===
+# Volume control 
+# Toggle mute
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym $mod+F2 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Lower Volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym $mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ -2%
+
+# Raise Volume
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym $mod+F4 exec pactl set-sink-volume @DEFAULT_SINK@ +2%
+
+# (@HOME) Dock/un-dock control
+bindsym $mod+F7 exec --no-startup-id $HOME/.config/scripts/dock.sh DOCK
+bindsym $mod+F8 exec --no-startup-id $HOME/.config/scripts/dock.sh UNDOCK
+
+# MPD Controls
+bindsym $mod+F9 exec mpc prev
+bindsym XF86AudioPrev exec mpc prev
+
+bindsym $mod+F10 exec mpc toggle
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioPause exec mpc toggle
+
+bindsym $mod+F11 exec mpc stop
+bindsym XF86AudioStop exec mpc stop
+
+bindsym $mod+F12 exec mpc next
+bindsym XF86AudioNext exec mpc next
+
+# Brightness control 
+# (@HOME) Only for home laptop
+bindsym XF86MonBrightnessUp exec brightnessctl -c backlight set +2%
+bindsym XF86MonBrightnessDown exec brightnessctl -c backlight set 2%-
+
+bindsym XF86KbdBrightnessUp exec brightnessctl -c backlight set +2%
+bindsym XF86KbdBrightnessDown exec brightnessctl -c backlight set 2%-
+
+
+# (@HOME) Print screen keys
+# NOTE: Use F1 instead of print screen button, due to stupid position of PrtSc button in thinkpad T14 keyboard.
+bindsym --release $mod+F1 exec "scrot -m '/home/adasko/pics/screen_%d.%m.%Y_%H%M_$wx$h.png'"
+bindsym --release $mod+Shift+F1 exec "scrot -s '/home/adasko/pics/screen_%d.%m.%Y_%H%M_$wx$h.png'"
+
+# (@WORK) Print screen keys
+# bindsym --release Print exec "scrot -m '/home/adam/Obrazy/screenshots/screen_%d.%m.%Y_%H%M_$wx$h.png'"
+# bindsym --release Shift+Print exec "scrot -s '/home/adam/Obrazy/screenshots/screen_%d.%m.%Y_%H%M_$wx$h.png'"
+
+
+# === Status Bar ===
+# Polybar
+exec --no-startup-id $HOME/.config/polybar/launch.sh
+
+
+# === Program keybindings ===
+# Run Rofi
+bindsym $mod+d exec rofi -show drun
+
+# Run terminal emulator
+# Urxvt
+bindsym $mod+Return exec urxvt
+
+# Lock screen
+bindsym $mod+x exec betterlockscreen --lock blur 
+
+
+# === AUTOSTART ===
+# Set wallpaper
+exec_always --no-startup-id $HOME/.config/scripts/papes.sh
+
+# (@HOME) Enable xfce power manager
+exec_always --no-startup-id xfce4-power-manager
+
+# (@HOME) Disable annoying ThinkPad Speaker
+exec_always --no-startup-id xset -b
+
+# (@HOME) Replace Printscr button with Context Menu button (stupid lenovo engineers).
+exec_always --no-startup-id xmodmap $HOME/.Xmodmap
+
+# (@WORK) Start all used programs in autostart
+# exec --no-startup-id skypeforlinux
+# exec --no-startup-id thunderbird
+# exec --no-startup-id firefox
+# exec --no-startup-id chromium-browser
+# exec --no-startup-id /home/adam/Pobrane/pycharm-2018.1.4/bin/pycharm.sh
+
+
+# === DISPLAY CONFIGURATION ===
+# Set proper monitor configuration
+# (@WORK)
+# exec --no-startup-id xrandr --output DVI-I-1 --left-of VGA-0
+
+# (@HOME-OFFICE)
+# exec --no-startup-id xrandr --output VGA-0 --left-of HDMI-1
+
+# (@HOME-OFFICE) Set proper mouse sensitivity for GPro-wireless mouse
+#exec --no-startup-id xinput set-prop 11 283 2.5
+
